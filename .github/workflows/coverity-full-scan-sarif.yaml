@@ -2,6 +2,7 @@
 # uses full Coverity Analysis package to upload a SARIF to GitHub -> Security issues    
 # example workflow for Coverity scans using the Black Duck Security Scan Action
 # https://github.com/marketplace/actions/black-duck-security-scan
+# 9/12/2025: no change for new coverity server
 name: coverity-sarif-report
 on:
   push:
