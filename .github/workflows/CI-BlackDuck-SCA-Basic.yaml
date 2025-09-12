@@ -18,6 +18,7 @@ jobs:
         ### Configure DETECT environment variables
         env:
           DETECT_PROJECT_NAME: ccaisip_${{ github.event.repository.name }}
+          DETECT_PROJECT_VERSION_NAME: DITL_siglab_main
           
         with:
           ### SCANNING: Required fields
