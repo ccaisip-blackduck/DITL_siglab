@@ -26,6 +26,7 @@ jobs:
       with:
         coverity_url: ${{ vars.COVERITY_URL }}
         coverity_user: ${{ secrets.COV_USER }}
+        coverity_local: true
         coverity_passphrase: ${{ secrets.COVERITY_PASSPHRASE }}
         coverity_project_name: ccaisip-${{ github.event.repository.name }}
         coverity_stream_name: ccaisip-${{ github.event.repository.name }}-${{ github.ref_name }}
@@ -42,6 +43,7 @@ jobs:
       uses: blackduck-inc/black-duck-security-scan@v2
       with:
         coverity_url: ${{ vars.COVERITY_URL }}
+        coverity_local: true
         coverity_user: ${{ secrets.COV_USER }}
         coverity_passphrase: ${{ secrets.COVERITY_PASSPHRASE }}
         coverity_project_name: ccaisip-${{ github.event.repository.name }}
