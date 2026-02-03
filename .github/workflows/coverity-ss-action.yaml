@@ -39,7 +39,7 @@ jobs:
         
     - name: Coverity PR Scan
       if: ${{ github.event_name == 'pull_request' }}
-      uses: blackduck-inc/black-duck-security-scan@v2.0.0
+      uses: blackduck-inc/black-duck-security-scan@v2
       with:
         coverity_url: ${{ vars.COVERITY_URL }}
         coverity_user: ${{ secrets.COV_USER }}
