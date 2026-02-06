@@ -32,7 +32,7 @@ public class SqlInjection {
          PreparedStatement preparedStatement = connection.prepareStatement(query);
          preparedStatement.setString(1, customerName);
          ResultSet results = preparedStatement.executeQuery();
-         return(results);
+         return(results);  
     }
     /* ccaisip - end of recommended fix */
 }
