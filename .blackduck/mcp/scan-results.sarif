@@ -1,0 +1,264 @@
+{
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "Black Duck Signal",
+          "guid": "5784dcf0-be5f-499f-829b-727f9ba94fd0",
+          "properties": {
+            "llmModel": "claude-sonnet-4"
+          },
+          "version": "0.1.8"
+        }
+      },
+      "properties": {
+        "successRate": {
+          "fileAnalysis": 100.0,
+          "agentCalls": 100.0
+        }
+      },
+      "results": [
+        {
+          "message": {
+            "text": "The data is untrusted because it comes from an HTTP request parameter."
+          },
+          "fixes": [
+            {
+              "description": {
+                "text": "Use parameterized queries with PreparedStatement to prevent SQL injection attacks."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "src\\main\\java\\SqlInjection.java"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 7,
+                        "endLine": 9,
+                        "startColumn": 9,
+                        "endColumn": 61,
+                        "snippet": {
+                          "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;\n        Statement statement = connection.createStatement();\n        ResultSet results = statement.executeQuery(query);"
+                        }
+                      },
+                      "insertedContent": {
+                        "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\n        PreparedStatement preparedStatement = connection.prepareStatement(query);\n        preparedStatement.setString(1, customerName);\n        ResultSet results = preparedStatement.executeQuery();"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "guid": "a1b2c3d4-e5f6-4789-abc1-23456789def0",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\\main\\java\\SqlInjection.java"
+                },
+                "region": {
+                  "startLine": 7,
+                  "endLine": 7,
+                  "startColumn": 9,
+                  "endColumn": 94,
+                  "snippet": {
+                    "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;"
+                  }
+                }
+              },
+              "message": {
+                "text": "SQL injection vulnerability: User input concatenated directly into SQL query."
+              }
+            }
+          ],
+          "properties": {
+            "cvssv3BaseScore": 9.8,
+            "cvssv3BaseVector": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "confidence": "high",
+            "requiresDataflow": true,
+            "cwe": 89
+          },
+          "baselineState": "TP",
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src\\main\\java\\SqlInjection.java"
+                          },
+                          "region": {
+                            "startLine": 6,
+                            "endLine": 6,
+                            "startColumn": 9,
+                            "endColumn": 68,
+                            "snippet": {
+                              "text": "String customerName = request.getParameter(\"customerName\");"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "Customer name is read from HTTP request parameter 'customerName'."
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src\\main\\java\\SqlInjection.java"
+                          },
+                          "region": {
+                            "startLine": 7,
+                            "endLine": 7,
+                            "startColumn": 9,
+                            "endColumn": 94,
+                            "snippet": {
+                              "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "SQL query is constructed by concatenating user-controlled input."
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ruleId": "SQL Injection"
+        },
+        {
+          "message": {
+            "text": "SQL injection vulnerability confirmed: the 'customerName' parameter is directly obtained from an HTTP request and concatenated into the SQL query without any sanitization, making the input untrusted."
+          },
+          "fixes": [
+            {
+              "description": {
+                "text": "Use parameterized queries with PreparedStatement to prevent SQL injection attacks."
+              },
+              "artifactChanges": [
+                {
+                  "artifactLocation": {
+                    "uri": "src\\main\\java\\SqlInjection.java"
+                  },
+                  "replacements": [
+                    {
+                      "deletedRegion": {
+                        "startLine": 19,
+                        "endLine": 21,
+                        "startColumn": 9,
+                        "endColumn": 61,
+                        "snippet": {
+                          "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;\n        Statement statement = connection.createStatement();\n        ResultSet results = statement.executeQuery(query);"
+                        }
+                      },
+                      "insertedContent": {
+                        "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = ?\";\n        PreparedStatement preparedStatement = connection.prepareStatement(query);\n        preparedStatement.setString(1, customerName);\n        ResultSet results = preparedStatement.executeQuery();"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "guid": "f1e2d3c4-b5a6-4987-cba1-65432109fed0",
+          "level": "error",
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src\\main\\java\\SqlInjection.java"
+                },
+                "region": {
+                  "startLine": 19,
+                  "endLine": 19,
+                  "startColumn": 9,
+                  "endColumn": 94,
+                  "snippet": {
+                    "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;"
+                  }
+                }
+              },
+              "message": {
+                "text": "SQL injection vulnerability: User input concatenated directly into SQL query."
+              }
+            }
+          ],
+          "properties": {
+            "cvssv3BaseScore": 9.8,
+            "cvssv3BaseVector": "AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+            "confidence": "high",
+            "requiresDataflow": true,
+            "cwe": 89
+          },
+          "baselineState": "TP",
+          "codeFlows": [
+            {
+              "threadFlows": [
+                {
+                  "locations": [
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src\\main\\java\\SqlInjection.java"
+                          },
+                          "region": {
+                            "startLine": 6,
+                            "endLine": 6,
+                            "startColumn": 9,
+                            "endColumn": 78,
+                            "snippet": {
+                              "text": "String customerName = request.getParameter(\"customerName\");"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "User input is retrieved from the HTTP request parameter 'customerName'."
+                        }
+                      }
+                    },
+                    {
+                      "location": {
+                        "physicalLocation": {
+                          "artifactLocation": {
+                            "uri": "src\\main\\java\\SqlInjection.java"
+                          },
+                          "region": {
+                            "startLine": 19,
+                            "endLine": 19,
+                            "startColumn": 9,
+                            "endColumn": 94,
+                            "snippet": {
+                              "text": "String query = \"SELECT account_balance FROM user_data WHERE user_name = \" + customerName;"
+                            }
+                          }
+                        },
+                        "message": {
+                          "text": "SQL query is constructed using unsanitized user input."
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "ruleId": "SQL Injection"
+        }
+      ]
+    }
+  ],
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json"
+}
