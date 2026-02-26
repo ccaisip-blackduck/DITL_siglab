@@ -1,0 +1,38 @@
+2026-02-24 11:49:30 - INFO : __main__ : Logging at level INFO to c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab\.blackduck\mcp\scan.log
+2026-02-24 11:49:30 - INFO : __main__ : Signal version: 0.1.8
+2026-02-24 11:49:30 - INFO : __main__ : Invoked with command line: C:\Users\CarmeloCaisip\.blackduck\mcp\signal\signal-pyarmor-windows_x86.exe c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab --config C:\Users\CarmeloCaisip\.blackduck\mcp\signal\.scan-config --report-file c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab\.blackduck\mcp\scan-results.sarif --log-file c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab\.blackduck\mcp\scan.log --cache-file C:\Users\CarmeloCaisip\.blackduck\mcp\signal\cache.db --llm-key=******** --include-paths c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab\src\main\java\SqlInjection.java
+2026-02-24 11:49:30 - INFO : __main__ : Using local caching: C:\Users\CarmeloCaisip\.blackduck\mcp\signal\cache.db
+2026-02-24 11:49:35 - INFO : utils : Successful connection to the LLM endpoint.
+2026-02-24 11:49:35 - INFO : __main__ : Using single-file LLM: claude-sonnet-4 at https://llm.core.blackduck.com/
+2026-02-24 11:49:35 - INFO : __main__ : Using agent LLM: o3-mini at https://llm.core.blackduck.com/
+2026-02-24 11:49:35 - INFO : __main__ : ##########################################
+2026-02-24 11:49:35 - INFO : __main__ : # SINGLE-FILE ANALYSIS
+2026-02-24 11:49:35 - INFO : __main__ : ##########################################
+2026-02-24 11:49:35 - INFO : __main__ : Only including paths ['c:\\Users\\CarmeloCaisip\\OneDrive - Black Duck Software\\Documents\\GitHub\\DITL_siglab\\src\\main\\java\\SqlInjection.java']
+2026-02-24 11:49:35 - INFO : __main__ : Identified 1 files for analysis
+2026-02-24 11:49:35 - INFO : __main__ : Default analysis enabled
+2026-02-24 11:49:35 - INFO : utils : Analyzing 1 of 1 (100%)
+2026-02-24 11:49:35 - INFO : utils : Successfully analyzed 100.0% of files
+2026-02-24 11:49:35 - INFO : __main__ : Found sql_injection
+2026-02-24 11:49:35 - INFO : __main__ : Found sql_injection
+2026-02-24 11:49:35 - INFO : __main__ : ##########################################
+2026-02-24 11:49:35 - INFO : __main__ : # DATAFLOW AGENT
+2026-02-24 11:49:35 - INFO : __main__ : ##########################################
+2026-02-24 11:49:35 - INFO : __main__ : [42m Sending sql_injection to dataflow analysis agent [0m
+2026-02-24 11:49:35 - INFO : __main__ : [42m Sending sql_injection to dataflow analysis agent [0m
+2026-02-24 11:49:35 - INFO : agents.sast : Running 2 tasks...
+2026-02-24 11:50:34 - INFO : __main__ : ##########################################
+2026-02-24 11:50:34 - INFO : __main__ : # OVERSIGHT AGENT
+2026-02-24 11:50:34 - INFO : __main__ : ##########################################
+2026-02-24 11:50:34 - INFO : __main__ : Initializing embedding-based oversight review...
+2026-02-24 11:50:44 - INFO : __main__ : Loaded 1258 rules with embeddings (model: text-embedding-3-small)
+2026-02-24 11:50:44 - INFO : __main__ : Performing additional triage for each result...
+2026-02-24 11:50:44 - INFO : agents.sast : Running 2 tasks...
+2026-02-24 11:51:29 - INFO : __main__ : Reviewing content of each result...
+2026-02-24 11:51:29 - INFO : __main__ : Reviewing 2 items with embedding-based oversight...
+2026-02-24 11:51:29 - INFO : __main__ : Expected to be much faster than traditional oversight
+2026-02-24 11:51:41 - INFO : __main__ : ##########################################
+2026-02-24 11:51:41 - INFO : __main__ : # REPORTING
+2026-02-24 11:51:41 - INFO : __main__ : ##########################################
+2026-02-24 11:51:41 - INFO : __main__ : Generating SARIF report for 2 issues...
+2026-02-24 11:51:41 - INFO : __main__ : Writing SARIF report to c:\Users\CarmeloCaisip\OneDrive - Black Duck Software\Documents\GitHub\DITL_siglab\.blackduck\mcp\scan-results.sarif
